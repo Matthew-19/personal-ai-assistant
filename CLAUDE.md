@@ -25,6 +25,7 @@ A personal AI assistant powered by Claude Code agents, skills, and a persistent 
 | `/capability-review` | Propose new skills from repeated delegation patterns |
 | `/memory-audit` | Monthly staleness check on all memory files |
 | `/structure-audit` | Directory / docs / skills health check (read-only) |
+| `/git` | Git workflow — branch, commit, PR following Conventional Commits |
 
 ## Permission Modes
 
