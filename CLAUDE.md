@@ -27,20 +27,29 @@ A personal AI assistant powered by Claude Code agents, skills, and a persistent 
 | `/structure-audit` | Directory / docs / skills health check (read-only) |
 
 ## Permission Modes
-- **Day-to-day:** `claude --permission-mode auto` (allowlist in `.claude/settings.local.json`)
-- **Sensitive:** default mode or `accept-edits`
+
+- **Session default:** `plan` (set in user `settings.json` via `permissions.defaultMode`). Every session starts in plan mode — explore and design the approach first, then exit to `/plan` to execute.
+- **Execution mode after plan:** When you exit plan mode, the session switches to `auto`. For sensitive work, switch to `accept-edits` or `manual` instead.
+- **Never use `--bypass-permissions`.** The deny list in project `settings.json` handles dangerous commands.
+- **Dangerous commands blocked globally** (see project `settings.json` deny list): `rm -rf`, `--force` pushes, `git reset --hard`, `mkfs`, `dd`.
 
 ## Key Conventions
 - All long-running work gets a session handoff at end
 - Memory files are the source of truth — check them before asking the user to repeat something
-- Prefer the free-claude-code proxy (`fcc-server` on :8082) for non-sensitive tasks
+- Default to `fcc-claude` (free proxy). Switch to official `claude` when subscribed or when the task needs the most reliable model.
 
 ## How to Run
-```bash
-# Start Claude Code in this repo with auto-permissions
-claude --permission-mode auto
 
-# Free model proxy (if not already running)
+Both binaries read the same `~/.claude/settings.json`, so `plan` mode works for either:
+
+```bash
+# Free Claude Code proxy (current default — uses fcc-server on :8082)
+fcc-claude
+
+# Official Claude Code (same flags, same settings — use when subscribed)
+claude
+
+# Start the free model proxy if not already running
 fcc-server &
 ```
 
