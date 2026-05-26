@@ -19,12 +19,12 @@ A personal AI assistant powered by Claude Code agents, skills, and a persistent 
 ## Skills
 | Skill | Purpose |
 |---|---|
-| `/start` | Session startup — load memory files, check open work |
-| `/session-handoff` | End-of-session context dump |
-| `/documentation` | Doc audits and health checks |
-| `/capability-review` | Propose new skills from session patterns |
-| `/memory-audit` | Monthly staleness check on memory files |
-| `/structure-audit` | Directory / docs / skills health check |
+| `/start` | Session startup — load memory, present brief, route to work |
+| `/session-handoff` | End-of-session context dump for `/clear` continuity |
+| `/documentation` | Post-session doc sweep across repos |
+| `/capability-review` | Propose new skills from repeated delegation patterns |
+| `/memory-audit` | Monthly staleness check on all memory files |
+| `/structure-audit` | Directory / docs / skills health check (read-only) |
 
 ## Permission Modes
 - **Day-to-day:** `claude --permission-mode auto` (allowlist in `.claude/settings.local.json`)
